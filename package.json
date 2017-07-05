@@ -1,0 +1,49 @@
+{
+  "private": true,
+  "scripts": {
+    "dev": "npm run development",
+    "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "watch": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "watch-poll": "npm run watch -- --watch-poll",
+    "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "prod": "npm run production",
+    "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
+  },
+  "devDependencies": {
+    "axios": "^0.15.3",
+    "cross-env": "^3.2.3",
+    "gulp": "^3.9.1",
+    "gulp-sass": "^3.1.0",
+    "jquery": "^3.2.1",
+    "laravel-mix": "^0.12.1",
+    "lodash": "^4.17.4",
+    "vue": "^2.1.10",
+    "vue-material": "^0.7.1"
+  },
+  "name": "ethode-llp1",
+  "description": "<p align=\"center\"><img src=\"https://laravel.com/assets/img/components/logo-laravel.svg\"></p>",
+  "version": "0.0.1",
+  "main": "app.js",
+  "directories": {
+    "test": "tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/x0rsw1tch/ethode-llp1.git"
+  },
+  "keywords": [
+    "Ethode",
+    "Lunch",
+    "Learn"
+  ],
+  "author": "Tom Kisha",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/x0rsw1tch/ethode-llp1/issues"
+  },
+  "homepage": "https://github.com/x0rsw1tch/ethode-llp1#readme",
+  "dependencies": {
+    "foundation": "^4.2.1-1",
+    "foundation-sites": "^6.4.0"
+  }
+}

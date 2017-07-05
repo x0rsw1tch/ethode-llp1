@@ -1,0 +1,125 @@
+/* Navigation Menu */
+
+.hover-underline-menu {
+    width: 100%;
+}
+
+.hover-underline-menu .menu {
+    background-color: #2C3840;
+}
+
+.hover-underline-menu .menu a {
+    color: #fefefe;
+    padding: 1.2rem 1.5rem;
+}
+
+.hover-underline-menu .menu .underline-from-center {
+    position: relative;
+}
+
+.hover-underline-menu .menu .underline-from-center::after {
+    content: "";
+    position: absolute;
+    top: calc(100% - 0.125rem);
+    border-bottom: 0.125rem solid #fefefe;
+    left: 50%;
+    right: 50%;
+    transition: all 0.5s ease;
+}
+
+.hover-underline-menu .menu .underline-from-center:hover::after {
+    left: 0;
+    right: 0;
+    transition: all 0.5s ease;
+}
+
+.nav-heading {
+    font-size: 2rem;
+}
+
+nav {
+    margin-bottom: 1rem;
+}
+
+nav img.logo {
+    height: 80%;
+    align-self: center;
+}
+
+nav li {
+    align-self: center;
+}
+
+
+/* Basic Card*/
+
+.card-basic {
+    position: relative;
+    z-index: 0;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+    border: 0;
+    border-radius: 0;
+    background: #2c3840;
+    box-shadow: none;
+    overflow: hidden;
+    color: #fefefe;
+}
+
+.card-basic >:last-child {
+    margin-bottom: 0;
+}
+
+.card-basic:hover .card-basic-img {
+    opacity: 1;
+}
+
+.card-basic-content {
+    position: relative;
+}
+
+.card-basic-actions {
+    flex: 0 1 auto;
+    padding: 1rem;
+    background: #e6e6e6;
+    background: #fefefe;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.card-basic-actions >:last-child {
+    margin-bottom: 0;
+}
+
+.card-basic-img {
+    max-width: 100%;
+    opacity: 0.85;
+    transition: all 0.25s ease;
+}
+
+.card-basic-title {
+    margin-bottom: 0;
+    font-weight: 300;
+    font-size: 1.5rem;
+}
+
+.card-basic-body {
+    font-size: 0.875rem;
+    letter-spacing: 1px;
+    opacity: 0.8;
+}
+
+.card-basic-button {
+    margin-bottom: 0;
+    flex: 1 0 0;
+    color: #fefefe;
+    background-color: #111;
+}
+
+.card-basic-button + .card-basic-button {
+    margin-left: 1rem;
+}

@@ -1,0 +1,12 @@
+{
+  "/js/vendor.js": "/js/vendor.js",
+  "/js/app.js": "/js/app.js",
+  "/js/manifest.js": "/js/manifest.js",
+  "/css/app.css": "/css/app.css",
+  "/mix.js": "/mix.js",
+  "/css/core.css": "/css/core.css",
+  "/css/vue-material.css": "/css/vue-material.css",
+  "/assets/js/vendor.js": "/assets/js/vendor.js",
+  "/assets/js/app.js": "/assets/js/app.js",
+  "/assets/js/manifest.js": "/assets/js/manifest.js"
+}
