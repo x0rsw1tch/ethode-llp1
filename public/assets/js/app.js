@@ -25,6 +25,7 @@ var testRunner = new Vue({
             console.log('Starting test: AJAX response');
             var vm = this;
             if (vm.ajaxResponse === 'Success!') return false;
+            vm.ajaxResponse = 'Testing in progress...';
             $.ajax({
                 url: '/',
                 type: 'GET',
@@ -43,8 +44,10 @@ var testRunner = new Vue({
         testHttp404: function () {
             console.log('Starting test: 404 response');
             var vm = this;
+            if (vm.http404Response === 'Success!') return false;
+            vm.http404Response = 'Testing in progress...';
             $.ajax({
-                url: '/404',
+                url: '/i-dont-exist',
                 type: 'GET',
                 statusCode: {
                     404: function (data) {
@@ -68,7 +71,10 @@ var testRunner = new Vue({
             });
         },
         testDbAccess: function () {
+            console.log('Starting test: Database Access');
             var vm = this;
+            if (vm.dbAccessResponse === 'Success!') return false;
+            vm.dbAccessResponse = 'Testing in progress...';
             $.ajax({
                 url: '/status/dbaccess',
                 type: 'GET',
@@ -85,6 +91,10 @@ var testRunner = new Vue({
             });
         },
         testDbRead: function () {
+            console.log('Starting test: Database Read');
+            var vm = this;
+            if (vm.dbReadResponse === 'Success!') return false;
+            vm.dbReadResponse = 'Testing in progress...';
             var vm = this;
             $.ajax({
                 url: '/status/dbread',
