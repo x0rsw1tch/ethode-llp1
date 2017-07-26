@@ -11,9 +11,15 @@
 |
 */
 
+
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
+
+Route::get('/new-idea', 'IdeasController@create');
+Route::get('/ideas', 'IdeasController@index');
+Route::post('/ideas', 'IdeasController@store');
+
 
 Route::get('/status', function () {
     return view('status');
@@ -36,3 +42,5 @@ Route::get('/status/dbread', function () {
     	return abort(500);
     }
 });
+
+

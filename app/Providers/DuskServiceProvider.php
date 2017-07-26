@@ -1,3 +1,7 @@
+<?php
+
+namespace App\Providers;
+
 use Laravel\Dusk\DuskServiceProvider;
 
 /**
@@ -11,3 +15,4 @@ public function register()
         $this->app->register(DuskServiceProvider::class);
     }
 }
+

@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    <div id="app">
+    <div id="status-app">
         <nav class="hover-underline-menu" data-menu-underline-from-center>
             <ul class="menu align-center">
                 <li>
@@ -101,7 +101,7 @@
     <script src="/assets/js/vendor/jquery.js"></script>
     <script src="/assets/js/vendor/foundation.js"></script>
     <script src="/assets/js/vendor/vue.js"></script>
-    <script src="/assets/js/app.js"></script>
+    <script src="/assets/js/status.js"></script>
 </body>
 
 </html>
