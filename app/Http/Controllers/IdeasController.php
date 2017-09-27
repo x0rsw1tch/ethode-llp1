@@ -14,7 +14,17 @@ class IdeasController extends Controller
      */
     public function index()
     {
-        return view('home');
+        return view('ideas');
+    }
+
+    public function listByOffset($offset)
+    {
+        return Idea::listByOffset($offset);
+    }
+
+    public function ideaCount()
+    {
+        return Idea::ideaCount();
     }
 
     /**

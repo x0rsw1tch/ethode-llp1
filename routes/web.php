@@ -11,14 +11,30 @@
 |
 */
 
+use App\Idea;
 
 Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/new-idea', 'IdeasController@create');
 Route::get('/ideas', 'IdeasController@index');
+Route::get('/new-idea', 'IdeasController@create');
+
+
+// REST API
 Route::post('/ideas', 'IdeasController@store');
+
+Route::get('/api/ideas/get/{offset}', function ($offset) {
+    $c = new App\Http\Controllers\IdeasController();
+    return response($c->listByOffset($offset))->header('Content-Type', 'application/json');
+});
+
+Route::get('/api/ideas/count', function () {
+    $c = new App\Http\Controllers\IdeasController();
+    return response([$c->ideaCount()])->header('Content-Type', 'application/json');
+});
+
+
 
 
 Route::get('/status', function () {

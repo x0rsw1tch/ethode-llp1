@@ -5,7 +5,8 @@
             <a class="nav-heading">Ethode L&amp;L Project 1</a>
         </li>
         <li><a href="/">Home</a></li>
-        <li><a href="/stats">Stats</a></li>
+        <li><a href="/ideas">Ideas</a></li>
+        <li><a href="/new-idea">New Idea</a></li>
         <li><a href="/status">Status</a></li>
     </ul>
 </nav>
