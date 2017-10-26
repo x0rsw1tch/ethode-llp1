@@ -506,7 +506,8 @@ textarea {
 
 .grid-container {
   max-width: 75rem;
-  margin: 0 auto; }
+  margin: 0 auto;
+  }
 
 .grid-container-padded {
   padding-left: 0.625rem;
@@ -814,7 +815,9 @@ textarea {
   @media print, screen and (min-width: 40em) {
     .grid-padding-x > .cell {
       padding-right: 0.9375rem;
-      padding-left: 0.9375rem; } }
+      padding-left: 0.9375rem;
+      align-items: center;
+      } }
 
 .small-up-1 > .cell {
   width: 100%; }
@@ -2357,7 +2360,7 @@ textarea {
   padding: 0.5rem;
   border: 1px solid #cacaca;
   border-radius: 0;
-  background-color: #fefefe;
+  background-color: #23323c;
   box-shadow: inset 0 1px 2px rgba(10, 10, 10, 0.1);
   font-family: inherit;
   font-size: 1rem;
@@ -2366,13 +2369,14 @@ textarea {
   color: #0a0a0a;
   transition: box-shadow 0.5s, border-color 0.25s ease-in-out;
   -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none; }
+  -moz-appearance: none;
+  appearance: none;
+  }
   [type='text']:focus, [type='password']:focus, [type='date']:focus, [type='datetime']:focus, [type='datetime-local']:focus, [type='month']:focus, [type='week']:focus, [type='email']:focus, [type='number']:focus, [type='search']:focus, [type='tel']:focus, [type='time']:focus, [type='url']:focus, [type='color']:focus,
   textarea:focus {
     outline: none;
     border: 1px solid #8a8a8a;
-    background-color: #fefefe;
+    background-color: #3d4951;
     box-shadow: 0 0 5px #cacaca;
     transition: box-shadow 0.5s, border-color 0.25s ease-in-out; }
 

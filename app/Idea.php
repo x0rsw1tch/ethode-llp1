@@ -13,7 +13,11 @@ class Idea extends Model
     public static function listByOffset($offset) {
         return static::offset($offset)->limit(25)->get();
     }
-
+    
+    public static function getById($id) {
+        return static::offset($id)->limit(1)->get();
+    }
+    
     public static function ideaCount() {
         return static::count();
     }

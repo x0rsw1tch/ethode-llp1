@@ -1,5 +1,4 @@
 /* Navigation Menu */
-
 .hover-underline-menu {
     width: 100%;
 }
@@ -50,9 +49,7 @@ nav li {
     align-self: center;
 }
 
-
 /* Basic Card*/
-
 .card-basic {
     position: relative;
     z-index: 0;
@@ -85,7 +82,6 @@ nav li {
     flex: 0 1 auto;
     padding: 1rem;
     background: #e6e6e6;
-    background: #fefefe;
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
@@ -118,8 +114,11 @@ nav li {
     flex: 1 0 0;
     color: #fefefe;
     background-color: #111;
+    width: 100%;
 }
 
 .card-basic-button + .card-basic-button {
     margin-left: 1rem;
 }
+
+

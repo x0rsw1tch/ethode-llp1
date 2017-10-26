@@ -90,9 +90,50 @@ class IdeasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $idea = Idea::find($request->id);
+        if ($idea->voters) {
+            $idea->voters = $this->checkVoters($idea, $request->voter);
+        } else {
+            $idea->voters = $request->voter;
+        }
+
+        // Check if idea save was successfull
+        if (!$idea->save()) {
+            abort(500, 'Error');
+        }
+
+        //User got saved show OK message
+        return response()->json($idea);
+    }
+
+
+    private function checkVoters (Idea $idea, $voter) {
+        
+        $voterHasVoted = strpos($idea->voters, $voter);
+        if ($voterHasVoted !== false && $voterHasVoted > -1) {
+            // Voter has already voted on this, remove vote
+            $votersList = explode(',', $idea->voters);
+            $newVoters = '';
+            for ($i = 0; $i < count($votersList); $i++) {
+                if ($votersList[$i] !== $voter) {
+                    $newVoters = $newVoters.$votersList[$i].',';
+                }
+            }
+            $idea->voters = substr($newVoters, 0, -1);
+        } else {
+            // Add vote
+            $newVoters = $idea->voters . ',' . $voter;
+            $idea->voters = $newVoters;
+        }
+
+
+        if ($idea->voters && strlen($idea->voters) > 0) {
+            return $idea->voters;
+        } else {
+            return null;
+        }
     }
 
     /**

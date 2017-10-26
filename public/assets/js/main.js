@@ -1,20 +1,29 @@
+var username;
 
-Vue.use(VueMaterial)
+// Check for possible existing username
+(function() {
+    var hasUsername = false;
+    if (window.localStorage) {
+        if (localStorage.getItem("username") && localStorage.getItem("username")) {
+            username = localStorage.getItem("username");
+            hasUsername = true;
+        }
+    } else if (window.sessionStorage) {
+        if (sessionStorage.getItem("username") && sessionStorage.getItem("username")) {
+            username = sessionStorage.getItem("username");
+            hasUsername = true;
+        }
+    }
+    if (!username) {
+        if (window.location.pathname !== '/login') {
+            window.location.pathname = '/login';
+        }
+    }
+})();
 
-var app = new Vue({
-    el: '#app'
-})
 
-Vue.material.registerTheme('default', {
-    primary: {
-        color: 'blue-grey',
-        hue: '800'
-    },
-    accent: {
-        color: 'deep-orange',
-        hue: '400'
-    },
-    warn: { color: 'red', hue: '500' },
-    background: 'blue-grey'
+
+$(document).ready(function() {
+    $(document).foundation();
+    $("[data-menu-underline-from-center] a").addClass("underline-from-center");
 });
-

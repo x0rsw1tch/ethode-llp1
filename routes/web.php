@@ -13,9 +13,8 @@
 
 use App\Idea;
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', function () { return view('home'); });
+Route::get('/login', function () { return view('login'); });
 
 Route::get('/ideas', 'IdeasController@index');
 Route::get('/new-idea', 'IdeasController@create');
@@ -23,6 +22,8 @@ Route::get('/new-idea', 'IdeasController@create');
 
 // REST API
 Route::post('/ideas', 'IdeasController@store');
+
+Route::post('/api/ideas/vote', 'IdeasController@update');
 
 Route::get('/api/ideas/get/{offset}', function ($offset) {
     $c = new App\Http\Controllers\IdeasController();

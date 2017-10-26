@@ -17,6 +17,7 @@ class CreateIdeasTable extends Migration
             $table->increments('id');
             $table->timestamps();
             $table->text('idea');
+            $table->string('voters')->nullable($value = true);
             $table->integer('user_id');
             $table->text('ip_address');
         });

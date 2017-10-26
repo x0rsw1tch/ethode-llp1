@@ -9,31 +9,49 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 class NewIdeaTest extends DuskTestCase {
 
 
+    public function testLogin() {
+        $this->browse(function (Browser $first, $second) {
+            $first->visit('/login')
+                  ->assertSee('What is your name?')
+                  ->type('username', 'Dusk')
+                  ->click('button.login-btn')
+                  ->waitForLocation('/')
+                  ->assertSee('What do you want to do');
+        });
+    }
+
+
     public function testViewNewIdeaPage() {
-        $this->browse(function (Browser $browser) {
+        
+        $loginFirst = $this->testLogin();
+        
+        $this->browse(function (Browser $browser) use ($loginFirst) {
             $browser->visit('/new-idea')
                     ->assertSee('New Idea');
         });
     }
 
     public function testSubmitBlankIdea() {
-        $this->browse(function (Browser $first, $second) {
-            $first->visit('/new-idea')
-                  ->assertSee('New Idea');
 
-            $second->visit('/new-idea')
-                   ->assertSee('New Idea')
-                   ->click('input[type=submit]')
-                   ->assertSee('No idea submitted');
+        $loginFirst = $this->testLogin();
+
+        $this->browse(function (Browser $first, $second) use ($loginFirst) {
+            $first->visit('/new-idea')
+                  ->assertSee('New Idea')
+                  ->click('#submit')
+                  ->assertSee('No idea submitted');
         });
     }
 
     public function testSubmitValidIdea() {
-        $this->browse(function (Browser $browser) {
+
+        $loginFirst = $this->testLogin();
+
+        $this->browse(function (Browser $browser) use ($loginFirst) {
             $browser->visit('/new-idea')
                     ->assertSee('New Idea')
                     ->type('idea', 'Test idea')
-                    ->click('input[type=submit]')
+                    ->click('#submit')
                     ->waitForText('Your idea')
                     ->assertSee('Your idea has been submitted.(Test idea)');
         });
