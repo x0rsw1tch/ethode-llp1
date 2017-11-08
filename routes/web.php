@@ -25,6 +25,8 @@ Route::post('/ideas', 'IdeasController@store');
 
 Route::post('/api/ideas/vote', 'IdeasController@update');
 
+Route::post('/api/ideas/presented', 'IdeasController@presented');
+
 Route::get('/api/ideas/get/{offset}', function ($offset) {
     $c = new App\Http\Controllers\IdeasController();
     return response($c->listByOffset($offset))->header('Content-Type', 'application/json');

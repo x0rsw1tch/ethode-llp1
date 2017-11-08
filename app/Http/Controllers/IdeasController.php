@@ -107,7 +107,20 @@ class IdeasController extends Controller
         //User got saved show OK message
         return response()->json($idea);
     }
+    
+    public function presented(Request $request) {
+        $idea = Idea::find($request->id);
 
+        $idea->presented = $request->presented;
+        
+        // Check if idea save was successfull
+        if (!$idea->save()) {
+            abort(500, 'Error');
+        }
+    
+        //User got saved show OK message
+        return response()->json($idea);
+    }
 
     private function checkVoters (Idea $idea, $voter) {
         

@@ -58,16 +58,13 @@ Vue.component('ideas-pager', {
 
 Vue.component('idea-list', {
     template: "#ideas",
-    props: ['ideaCount'],
+    props: ['ideaCount', 'filters'],
     data: function() {
         return {
             ideas: null
         }
     },
     methods: {
-        updateList: function() {
-            console.log('its vorking !');
-        },
         getPage: function(page) {
             var vm = this;
             $.ajax({
@@ -94,10 +91,43 @@ Vue.component('idea-list', {
 
 Vue.component('idea', {
     template: "#idea",
-    props: ['idea'],
+    props: ['idea', 'filters'],
     methods: {
 		truncatedIdea: function(idea) {
 			return idea.substring(0, 256);
+        },
+        presented: function (idea, status) {
+            var vm = this;
+            var voteData = {
+                "_token": document.getElementById('_token').value,
+                "id": idea.id,
+                "presented": status
+            };
+            if (username) {
+                $.ajax({
+                    url: '/api/ideas/presented',
+                    method: 'POST',
+                    data: jQuery.param(voteData),
+                    success: function (data) {
+                        if (data) {
+                            var ideaList = vm.$parent.ideas;
+                            for (i = 0; i < ideaList.length; i++) {
+                                if (ideaList[i].id == data.id) {
+                                    vm.$set(vm.$parent.ideas, i, data);
+                                    //vm.$parent.$parent.getData();
+                                }
+                            }
+                        } else {
+                            alert ('There was an error. Check console');
+                            console.log(data);
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        alert ('There was an error. Check console');
+                        console.log(xhr, stats, error);
+                    }
+                });
+            }
         }
     }
 });
@@ -175,8 +205,11 @@ Vue.component('idea-vote-button', {
 IdeasApp.vue = new Vue({
     el: '#ideas-app',
     data: {
-        //ideas: null,
-        ideaCount: 0
+        ideaCount: 0,
+        ideasFilters: {
+            showPresented: true,
+            showUnpresented: true
+        }
     },
     methods: {
         getIdeaCount: function() {
@@ -189,12 +222,6 @@ IdeasApp.vue = new Vue({
                     }
                 }
             });
-        },
-        getIdeasByOffset: function(offset) {
-            console.log('ROOT: getIdeasByOffset()');
-        },
-        updateList: function() {
-            console.log('its vorking !');
         }
     },
     created: function() {

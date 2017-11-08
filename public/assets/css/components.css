@@ -49,6 +49,38 @@ nav li {
     align-self: center;
 }
 
+/* Filter Options */
+.options-list {
+    list-style-type: none;
+    margin-left: 0;
+}
+
+.options-list .switch-paddle {
+    background-color: #333;
+}
+
+.options-list .switch.tiny > label {
+    width: 10rem;
+    border-radius: 7px;
+}
+
+.options-list .switch-paddle > .switch-active,
+.options-list .switch-paddle > .switch-inactive {
+    left: 2.5%;
+}
+
+.options-list .switch.tiny .switch-paddle::after {
+    left: inherit;
+    right: 1.90rem;
+    border-radius: 50%;
+}
+
+.options-list .switch.tiny input:checked ~ .switch-paddle::after {
+    left: inherit;
+    right: 0.33rem;
+}
+
+
 /* Basic Card*/
 .card-basic {
     position: relative;
