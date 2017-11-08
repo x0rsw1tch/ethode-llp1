@@ -2,7 +2,7 @@ var IdeasApp = {};
 
 IdeasApp.vueMixins = {
     methods: {
-        userHasVoted: function () {
+        userHasVoted: function() {
             if (this.idea.voters && this.idea.voters.indexOf(localStorage.username.toLowerCase()) > -1) {
                 return true;
             } else {
@@ -83,7 +83,7 @@ Vue.component('idea-list', {
                 }
             });
         }
-	},
+    },
     mounted: function() {
         this.getData();
     }
@@ -93,10 +93,10 @@ Vue.component('idea', {
     template: "#idea",
     props: ['idea', 'filters'],
     methods: {
-		truncatedIdea: function(idea) {
-			return idea.substring(0, 256);
+        truncatedIdea: function(idea) {
+            return idea.substring(0, 256);
         },
-        presented: function (idea, status) {
+        presented: function(idea, status) {
             var vm = this;
             var voteData = {
                 "_token": document.getElementById('_token').value,
@@ -108,7 +108,7 @@ Vue.component('idea', {
                     url: '/api/ideas/presented',
                     method: 'POST',
                     data: jQuery.param(voteData),
-                    success: function (data) {
+                    success: function(data) {
                         if (data) {
                             var ideaList = vm.$parent.ideas;
                             for (i = 0; i < ideaList.length; i++) {
@@ -118,12 +118,12 @@ Vue.component('idea', {
                                 }
                             }
                         } else {
-                            alert ('There was an error. Check console');
+                            alert('There was an error. Check console');
                             console.log(data);
                         }
                     },
                     error: function(xhr, status, error) {
-                        alert ('There was an error. Check console');
+                        alert('There was an error. Check console');
                         console.log(xhr, stats, error);
                     }
                 });
@@ -154,7 +154,7 @@ Vue.component('idea-vote-button', {
     props: ['idea'],
     mixins: [IdeasApp.vueMixins],
     methods: {
-        sendVote: function (idea) {
+        sendVote: function(idea) {
             var vm = this;
             var voteData = {
                 "_token": document.getElementById('_token').value,
@@ -166,7 +166,7 @@ Vue.component('idea-vote-button', {
                     url: '/api/ideas/vote',
                     method: 'POST',
                     data: jQuery.param(voteData),
-                    success: function (data) {
+                    success: function(data) {
                         if (data) {
                             // Locate proper index to update
                             var ideaList = vm.$parent.$parent.ideas;
@@ -177,12 +177,12 @@ Vue.component('idea-vote-button', {
                                 }
                             }
                         } else {
-                            alert ('There was an error. Check console');
+                            alert('There was an error. Check console');
                             console.log(xhr, stats, error);
                         }
                     },
                     error: function(xhr, status, error) {
-                        alert ('There was an error. Check console');
+                        alert('There was an error. Check console');
                         console.log(xhr, stats, error);
                     }
                 });
@@ -190,7 +190,7 @@ Vue.component('idea-vote-button', {
         },
     },
     computed: {
-        voteButtonText: function () {
+        voteButtonText: function() {
             if (this.idea.voters && this.idea.voters.indexOf(localStorage.username.toLowerCase()) > -1) {
                 return 'Unvote';
             } else {
